@@ -1,0 +1,191 @@
+---
+# noqa: var-naming[no-role-prefix]
+# defaults file for foreman_content_hashicorp
+
+#######################################
+### URLS
+#######################################
+
+### HASHICORP
+
+foreman_repo_baseurl_hashicorp: https://rpm.releases.hashicorp.com
+
+
+#######################################
+### ENABLE VARS
+#######################################
+
+### HASHICORP
+
+foreman_enable_hashicorp: false
+
+foreman_enable_hashicorp_el7: false
+foreman_enable_hashicorp_el8: "{{ foreman_enable_hashicorp | bool }}"
+foreman_enable_hashicorp_el9: "{{ foreman_enable_hashicorp | bool }}"
+foreman_enable_hashicorp_fedora37: false
+foreman_enable_hashicorp_fedora38: false
+foreman_enable_hashicorp_fedora39: false
+foreman_enable_hashicorp_debian9: false
+foreman_enable_hashicorp_debian10: false
+foreman_enable_hashicorp_debian11: false
+foreman_enable_hashicorp_debian12: false
+foreman_enable_hashicorp_ubuntu1804: false
+foreman_enable_hashicorp_ubuntu2004: false
+foreman_enable_hashicorp_ubuntu2204: false
+
+
+#######################################
+### PRODUCT DEFAULTS
+#######################################
+
+### HASHICORP
+
+foreman_products_defaults_download_policy_hashicorp: "{{ foreman_products_defaults_download_policy }}"
+foreman_products_defaults_mirroring_policy_hashicorp: mirror_content_only
+foreman_products_defaults_verify_ssl_on_sync_hashicorp: "{{ foreman_products_defaults_verify_ssl_on_sync | bool }}"
+foreman_products_defaults_http_proxy_policy_hashicorp: "{{ foreman_products_defaults_http_proxy_policy }}"
+foreman_products_defaults_unprotected_hashicorp: "{{ foreman_products_defaults_unprotected | bool }}"
+
+
+#######################################
+### ORGANIZATION VARS
+#######################################
+
+### HASHICORP
+
+foreman_organization_hashicorp: "{{ foreman_organization }}"
+
+foreman_organization_hashicorp_el7: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_el8: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_el9: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_fedora37: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_fedora38: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_fedora39: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_debian9: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_debian10: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_debian11: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_debian12: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_ubuntu1804: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_ubuntu2004: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_ubuntu2204: "{{ foreman_organization_hashicorp }}"
+
+
+#######################################
+### CONTENT VIEW DEFAULTS
+#######################################
+
+### HASHICORP
+
+foreman_cv_allow_promote_hashicorp: "{{ foreman_cv_allow_promote | bool }}"
+
+foreman_cv_allow_promote_hashicorp_el7: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_el8: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_el9: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_fedora37: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_fedora38: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_fedora39: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_debian9: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_debian10: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_debian11: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_debian12: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_ubuntu1804: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_ubuntu2004: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_ubuntu2204: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+
+
+#######################################
+### CONTENT
+#######################################
+
+foreman_content_credentials_hashicorp_main:
+  - name: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Hashicorp"
+    content_type: gpg_key
+    content: "{{ lookup('ansible.builtin.url', foreman_repo_baseurl_hashicorp ~ '/gpg', split_lines=False, validate_certs=False) }}"
+    # content: "{{ lookup('ansible.builtin.file', role_path ~ '/files/RPM-GPG-KEY-hashicorp') }}"
+
+foreman_content_credentials_hashicorp: "{{ ( foreman_content_credentials_hashicorp_main | default([]) if foreman_enable_hashicorp | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_el7 | default([]) if foreman_enable_hashicorp_el7 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_el8 | default([]) if foreman_enable_hashicorp_el8 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_el9 | default([]) if foreman_enable_hashicorp_el9 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_fedora37 | default([]) if foreman_enable_hashicorp_fedora37 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_fedora38 | default([]) if foreman_enable_hashicorp_fedora38 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_fedora39 | default([]) if foreman_enable_hashicorp_fedora39 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_debian9 | default([]) if foreman_enable_hashicorp_debian9 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_debian10 | default([]) if foreman_enable_hashicorp_debian10 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_debian11 | default([]) if foreman_enable_hashicorp_debian11 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  }}"
+
+foreman_products_hashicorp_main: []
+foreman_products_hashicorp: "{{ ( foreman_products_hashicorp_main | default([]) if foreman_enable_hashicorp | bool else [] ) |
+  union( foreman_products_hashicorp_el7 | default([]) if foreman_enable_hashicorp_el7 | bool else [] ) |
+  union( foreman_products_hashicorp_el8 | default([]) if foreman_enable_hashicorp_el8 | bool else [] ) |
+  union( foreman_products_hashicorp_el9 | default([]) if foreman_enable_hashicorp_el9 | bool else [] ) |
+  union( foreman_products_hashicorp_fedora37 | default([]) if foreman_enable_hashicorp_fedora37 | bool else [] ) |
+  union( foreman_products_hashicorp_fedora38 | default([]) if foreman_enable_hashicorp_fedora38 | bool else [] ) |
+  union( foreman_products_hashicorp_fedora39 | default([]) if foreman_enable_hashicorp_fedora39 | bool else [] ) |
+  union( foreman_products_hashicorp_debian9 | default([]) if foreman_enable_hashicorp_debian9 | bool else [] ) |
+  union( foreman_products_hashicorp_debian10 | default([]) if foreman_enable_hashicorp_debian10 | bool else [] ) |
+  union( foreman_products_hashicorp_debian11 | default([]) if foreman_enable_hashicorp_debian11 | bool else [] ) |
+  union( foreman_products_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
+  union( foreman_products_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
+  union( foreman_products_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
+  union( foreman_products_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  }}"
+
+foreman_content_views_hashicorp_main: []
+foreman_content_views_hashicorp: "{{ ( foreman_content_views_hashicorp_main | default([]) if foreman_enable_hashicorp | bool else [] ) |
+  union( foreman_content_views_hashicorp_el7 | default([]) if foreman_enable_hashicorp_el7 | bool else [] ) |
+  union( foreman_content_views_hashicorp_el8 | default([]) if foreman_enable_hashicorp_el8 | bool else [] ) |
+  union( foreman_content_views_hashicorp_el9 | default([]) if foreman_enable_hashicorp_el9 | bool else [] ) |
+  union( foreman_content_views_hashicorp_fedora37 | default([]) if foreman_enable_hashicorp_fedora37 | bool else [] ) |
+  union( foreman_content_views_hashicorp_fedora38 | default([]) if foreman_enable_hashicorp_fedora38 | bool else [] ) |
+  union( foreman_content_views_hashicorp_fedora39 | default([]) if foreman_enable_hashicorp_fedora39 | bool else [] ) |
+  union( foreman_content_views_hashicorp_debian9 | default([]) if foreman_enable_hashicorp_debian9 | bool else [] ) |
+  union( foreman_content_views_hashicorp_debian10 | default([]) if foreman_enable_hashicorp_debian10 | bool else [] ) |
+  union( foreman_content_views_hashicorp_debian11 | default([]) if foreman_enable_hashicorp_debian11 | bool else [] ) |
+  union( foreman_content_views_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
+  union( foreman_content_views_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
+  union( foreman_content_views_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
+  union( foreman_content_views_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  }}"
+
+foreman_activation_keys_hashicorp_main: []
+foreman_activation_keys_hashicorp: "{{ ( foreman_activation_keys_hashicorp_main | default([]) if foreman_enable_hashicorp | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_el7 | default([]) if foreman_enable_hashicorp_el7 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_el8 | default([]) if foreman_enable_hashicorp_el8 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_el9 | default([]) if foreman_enable_hashicorp_el9 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_fedora37 | default([]) if foreman_enable_hashicorp_fedora37 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_fedora38 | default([]) if foreman_enable_hashicorp_fedora38 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_fedora39 | default([]) if foreman_enable_hashicorp_fedora39 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_debian9 | default([]) if foreman_enable_hashicorp_debian9 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_debian10 | default([]) if foreman_enable_hashicorp_debian10 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_debian11 | default([]) if foreman_enable_hashicorp_debian11 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  }}"
+
+foreman_sync_plan_products_hashicorp_main:
+  - "{{ foreman_product_name_prefix | default('') }}Hashicorp"
+
+foreman_sync_plan_products_hashicorp: "{{ ( foreman_sync_plan_products_hashicorp_main | default([]) if foreman_enable_hashicorp | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_el7 | default([]) if foreman_enable_hashicorp_el7 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_el8 | default([]) if foreman_enable_hashicorp_el8 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_el9 | default([]) if foreman_enable_hashicorp_el9 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_fedora37 | default([]) if foreman_enable_hashicorp_fedora37 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_fedora38 | default([]) if foreman_enable_hashicorp_fedora38 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_fedora39 | default([]) if foreman_enable_hashicorp_fedora39 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_debian9 | default([]) if foreman_enable_hashicorp_debian9 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_debian10 | default([]) if foreman_enable_hashicorp_debian10 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_debian11 | default([]) if foreman_enable_hashicorp_debian11 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  }}"
+
