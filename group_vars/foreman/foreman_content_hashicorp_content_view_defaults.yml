@@ -25,3 +25,4 @@
 # foreman_cv_allow_promote_hashicorp_ubuntu1804: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
 # foreman_cv_allow_promote_hashicorp_ubuntu2004: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
 # foreman_cv_allow_promote_hashicorp_ubuntu2204: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+# foreman_cv_allow_promote_hashicorp_ubuntu2404: "{{ foreman_cv_allow_promote_hashicorp | bool }}"

@@ -21,3 +21,4 @@
 # foreman_enable_hashicorp_ubuntu1804: false
 # foreman_enable_hashicorp_ubuntu2004: false
 # foreman_enable_hashicorp_ubuntu2204: false
+# foreman_enable_hashicorp_ubuntu2404: false

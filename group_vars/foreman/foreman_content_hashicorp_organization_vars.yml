@@ -21,3 +21,4 @@
 # foreman_organization_hashicorp_ubuntu1804: "{{ foreman_organization_hashicorp }}"
 # foreman_organization_hashicorp_ubuntu2004: "{{ foreman_organization_hashicorp }}"
 # foreman_organization_hashicorp_ubuntu2204: "{{ foreman_organization_hashicorp }}"
+# foreman_organization_hashicorp_ubuntu2404: "{{ foreman_organization_hashicorp }}"

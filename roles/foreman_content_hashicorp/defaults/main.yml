@@ -32,6 +32,7 @@ foreman_enable_hashicorp_debian12: false
 foreman_enable_hashicorp_ubuntu1804: false
 foreman_enable_hashicorp_ubuntu2004: false
 foreman_enable_hashicorp_ubuntu2204: false
+foreman_enable_hashicorp_ubuntu2404: false
 
 
 #######################################
@@ -68,6 +69,7 @@ foreman_organization_hashicorp_debian12: "{{ foreman_organization_hashicorp }}"
 foreman_organization_hashicorp_ubuntu1804: "{{ foreman_organization_hashicorp }}"
 foreman_organization_hashicorp_ubuntu2004: "{{ foreman_organization_hashicorp }}"
 foreman_organization_hashicorp_ubuntu2204: "{{ foreman_organization_hashicorp }}"
+foreman_organization_hashicorp_ubuntu2404: "{{ foreman_organization_hashicorp }}"
 
 
 #######################################
@@ -91,6 +93,7 @@ foreman_cv_allow_promote_hashicorp_debian12: "{{ foreman_cv_allow_promote_hashic
 foreman_cv_allow_promote_hashicorp_ubuntu1804: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
 foreman_cv_allow_promote_hashicorp_ubuntu2004: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
 foreman_cv_allow_promote_hashicorp_ubuntu2204: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
+foreman_cv_allow_promote_hashicorp_ubuntu2404: "{{ foreman_cv_allow_promote_hashicorp | bool }}"
 
 
 #######################################
@@ -116,7 +119,8 @@ foreman_content_credentials_hashicorp: "{{ ( foreman_content_credentials_hashico
   union( foreman_content_credentials_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
   union( foreman_content_credentials_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
   union( foreman_content_credentials_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
-  union( foreman_content_credentials_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  union( foreman_content_credentials_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] ) |
+  union( foreman_content_credentials_hashicorp_ubuntu2404 | default([]) if foreman_enable_hashicorp_ubuntu2404 | bool else [] )
   }}"
 
 foreman_products_hashicorp_main: []
@@ -133,7 +137,8 @@ foreman_products_hashicorp: "{{ ( foreman_products_hashicorp_main | default([]) 
   union( foreman_products_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
   union( foreman_products_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
   union( foreman_products_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
-  union( foreman_products_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  union( foreman_products_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] ) |
+  union( foreman_products_hashicorp_ubuntu2404 | default([]) if foreman_enable_hashicorp_ubuntu2404 | bool else [] )
   }}"
 
 foreman_content_views_hashicorp_main: []
@@ -150,7 +155,8 @@ foreman_content_views_hashicorp: "{{ ( foreman_content_views_hashicorp_main | de
   union( foreman_content_views_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
   union( foreman_content_views_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
   union( foreman_content_views_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
-  union( foreman_content_views_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  union( foreman_content_views_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] ) |
+  union( foreman_content_views_hashicorp_ubuntu2404 | default([]) if foreman_enable_hashicorp_ubuntu2404 | bool else [] )
   }}"
 
 foreman_activation_keys_hashicorp_main: []
@@ -167,7 +173,8 @@ foreman_activation_keys_hashicorp: "{{ ( foreman_activation_keys_hashicorp_main 
   union( foreman_activation_keys_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
   union( foreman_activation_keys_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
   union( foreman_activation_keys_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
-  union( foreman_activation_keys_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  union( foreman_activation_keys_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] ) |
+  union( foreman_activation_keys_hashicorp_ubuntu2404 | default([]) if foreman_enable_hashicorp_ubuntu2404 | bool else [] )
   }}"
 
 foreman_sync_plan_products_hashicorp_main:
@@ -186,6 +193,7 @@ foreman_sync_plan_products_hashicorp: "{{ ( foreman_sync_plan_products_hashicorp
   union( foreman_sync_plan_products_hashicorp_debian12 | default([]) if foreman_enable_hashicorp_debian12 | bool else [] ) |
   union( foreman_sync_plan_products_hashicorp_ubuntu1804 | default([]) if foreman_enable_hashicorp_ubuntu1804 | bool else [] ) |
   union( foreman_sync_plan_products_hashicorp_ubuntu2004 | default([]) if foreman_enable_hashicorp_ubuntu2004 | bool else [] ) |
-  union( foreman_sync_plan_products_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] )
+  union( foreman_sync_plan_products_hashicorp_ubuntu2204 | default([]) if foreman_enable_hashicorp_ubuntu2204 | bool else [] ) |
+  union( foreman_sync_plan_products_hashicorp_ubuntu2404 | default([]) if foreman_enable_hashicorp_ubuntu2404 | bool else [] )
   }}"
 
