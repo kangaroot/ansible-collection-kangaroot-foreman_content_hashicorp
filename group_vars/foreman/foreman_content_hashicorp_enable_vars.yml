@@ -11,14 +11,10 @@
 # foreman_enable_hashicorp_el7: false
 # foreman_enable_hashicorp_el8: "{{ foreman_enable_hashicorp | bool }}"
 # foreman_enable_hashicorp_el9: "{{ foreman_enable_hashicorp | bool }}"
-# foreman_enable_hashicorp_fedora37: false
-# foreman_enable_hashicorp_fedora38: false
-# foreman_enable_hashicorp_fedora39: false
 # foreman_enable_hashicorp_debian9: false
 # foreman_enable_hashicorp_debian10: false
 # foreman_enable_hashicorp_debian11: false
 # foreman_enable_hashicorp_debian12: false
-# foreman_enable_hashicorp_ubuntu1804: false
 # foreman_enable_hashicorp_ubuntu2004: false
 # foreman_enable_hashicorp_ubuntu2204: false
 # foreman_enable_hashicorp_ubuntu2404: false

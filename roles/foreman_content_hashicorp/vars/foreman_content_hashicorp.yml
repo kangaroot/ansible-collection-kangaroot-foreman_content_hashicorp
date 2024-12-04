@@ -56,40 +56,6 @@ foreman_products_hashicorp_el9:
         organization: "{{ foreman_organization_hashicorp_el9 }}"
 
 
-foreman_products_hashicorp_fedora37:
-  - name: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
-    label: "{{ foreman_product_label_prefix | default('') }}Hashicorp"
-    organization: "{{ foreman_organization_hashicorp_fedora37 }}"
-    repositories:
-      - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - Fedora 37"
-        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-fedora37"
-        url: "{{ foreman_repo_baseurl_hashicorp }}/RHEL/7/x86_64/stable"
-        <<: *foreman_products_defaults
-        organization: "{{ foreman_organization_hashicorp_fedora37 }}"
-
-foreman_products_hashicorp_fedora38:
-  - name: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
-    label: "{{ foreman_product_label_prefix | default('') }}Hashicorp"
-    organization: "{{ foreman_organization_hashicorp_fedora38 }}"
-    repositories:
-      - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - Fedora 38"
-        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-fedora38"
-        url: "{{ foreman_repo_baseurl_hashicorp }}/RHEL/8/x86_64/stable"
-        <<: *foreman_products_defaults
-        organization: "{{ foreman_organization_hashicorp_fedora38 }}"
-
-foreman_products_hashicorp_fedora39:
-  - name: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
-    label: "{{ foreman_product_label_prefix | default('') }}Hashicorp"
-    organization: "{{ foreman_organization_hashicorp_fedora39 }}"
-    repositories:
-      - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - Fedora 39"
-        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-fedora39"
-        url: "{{ foreman_repo_baseurl_hashicorp }}/RHEL/9/x86_64/stable"
-        <<: *foreman_products_defaults
-        organization: "{{ foreman_organization_hashicorp_fedora39 }}"
-
-
 foreman_products_hashicorp_debian9:
   - name: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
     label: "{{ foreman_product_label_prefix | default('') }}Hashicorp"
@@ -138,18 +104,6 @@ foreman_products_hashicorp_debian12:
         organization: "{{ foreman_organization_hashicorp_debian12 }}"
         deb_releases: bookworm
 
-
-foreman_products_hashicorp_ubuntu1804:
-  - name: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
-    label: "{{ foreman_product_label_prefix | default('') }}Hashicorp"
-    organization: "{{ foreman_organization_hashicorp_ubuntu1804 }}"
-    repositories:
-      - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - Amd64 - Ubuntu 18.04 (Bionic Beaver)"
-        label: "{{ foreman_repo_label_prefix | default('') }}azure-cli-ubuntu1804"
-        url: "{{ foreman_repo_baseurl_Hashicorp }}/repos/azure-cli/"
-        <<: *foreman_products_defaults_debian
-        organization: "{{ foreman_organization_hashicorp_ubuntu1804 }}"
-        deb_releases: bionic
 
 foreman_products_hashicorp_ubuntu2004:
   - name: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
@@ -213,31 +167,6 @@ foreman_content_views_hashicorp_el9:
     allow_promote: "{{ foreman_cv_allow_promote_hashicorp_el9 }}"
 
 
-foreman_content_views_hashicorp_fedora37:
-  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}hashicorp_fedora37"
-    organization: "{{ foreman_organization_hashicorp_fedora37 }}"
-    repositories:
-      - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - Fedora 37"
-        product: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
-    allow_promote: "{{ foreman_cv_allow_promote_hashicorp_fedora37 }}"
-
-foreman_content_views_hashicorp_fedora38:
-  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}hashicorp_fedora38"
-    organization: "{{ foreman_organization_hashicorp_fedora38 }}"
-    repositories:
-      - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - Fedora 38"
-        product: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
-    allow_promote: "{{ foreman_cv_allow_promote_hashicorp_fedora38 }}"
-
-foreman_content_views_hashicorp_fedora39:
-  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}hashicorp_fedora39"
-    organization: "{{ foreman_organization_hashicorp_fedora39 }}"
-    repositories:
-      - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - Fedora 39"
-        product: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
-    allow_promote: "{{ foreman_cv_allow_promote_hashicorp_fedora39 }}"
-
-
 foreman_content_views_hashicorp_debian9:
   - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}hashicorp_debian9"
     organization: "{{ foreman_organization_hashicorp_debian9 }}"
@@ -270,14 +199,6 @@ foreman_content_views_hashicorp_debian12:
         product: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
     allow_promote: "{{ foreman_cv_allow_promote_hashicorp_debian12 }}"
 
-
-foreman_content_views_hashicorp_ubuntu1804:
-  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}hashicorp_ubuntu1804"
-    organization: "{{ foreman_organization_hashicorp_ubuntu1804 }}"
-    repositories:
-      - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - Amd64 - Ubuntu 18.04 (Bionic Beaver)"
-        product: "{{ foreman_product_name_prefix | default('') }}Hashicorp"
-    allow_promote: "{{ foreman_cv_allow_promote_hashicorp_ubuntu1804 }}"
 
 foreman_content_views_hashicorp_ubuntu2004:
   - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}hashicorp_ubuntu2004"
