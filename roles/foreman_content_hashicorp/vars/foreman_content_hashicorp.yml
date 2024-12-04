@@ -15,8 +15,9 @@ foreman_products_defaults: &foreman_products_defaults
   http_proxy_policy: "{{ foreman_products_defaults_http_proxy_policy_hashicorp }}"
   unprotected: "{{ foreman_products_defaults_unprotected_hashicorp | bool }}"
 
-foreman_products_defaults: &foreman_products_defaults_debian
+foreman_products_defaults_debian: &foreman_products_defaults_debian
   <<: *foreman_products_defaults
+  content_type: deb
   # deb_releases: stable
   deb_components: main
   deb_architectures: amd64
@@ -28,7 +29,7 @@ foreman_products_hashicorp_el7:
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - RHEL 7"
         label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-el7"
-        url: "{{ foreman_repo_baseurl_hashicorp }}/RHEL/7/x86_64/stable"
+        url: "{{ foreman_repo_baseurl_hashicorp_rpm }}/RHEL/7/x86_64/stable"
         <<: *foreman_products_defaults
         organization: "{{ foreman_organization_hashicorp_el7 }}"
 
@@ -39,7 +40,7 @@ foreman_products_hashicorp_el8:
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - RHEL 8"
         label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-el8"
-        url: "{{ foreman_repo_baseurl_hashicorp }}/RHEL/8/x86_64/stable"
+        url: "{{ foreman_repo_baseurl_hashicorp_rpm }}/RHEL/8/x86_64/stable"
         <<: *foreman_products_defaults
         organization: "{{ foreman_organization_hashicorp_el8 }}"
 
@@ -50,7 +51,7 @@ foreman_products_hashicorp_el9:
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - x86_64 - RHEL 9"
         label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-el9"
-        url: "{{ foreman_repo_baseurl_hashicorp }}/RHEL/9/x86_64/stable"
+        url: "{{ foreman_repo_baseurl_hashicorp_rpm }}/RHEL/9/x86_64/stable"
         <<: *foreman_products_defaults
         organization: "{{ foreman_organization_hashicorp_el9 }}"
 
@@ -95,8 +96,8 @@ foreman_products_hashicorp_debian9:
     organization: "{{ foreman_organization_hashicorp_debian9 }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - Amd64 - Debian 9 (Stretch)"
-        label: "{{ foreman_repo_label_prefix | default('') }}azure-cli-debian9"
-        url: "{{ foreman_repo_baseurl_Hashicorp }}/repos/azure-cli/"
+        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-debian9"
+        url: "{{ foreman_repo_baseurl_hashicorp_apt }}/"
         <<: *foreman_products_defaults_debian
         organization: "{{ foreman_organization_hashicorp_debian9 }}"
         deb_releases: stretch
@@ -107,8 +108,8 @@ foreman_products_hashicorp_debian10:
     organization: "{{ foreman_organization_hashicorp_debian10 }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - Amd64 - Debian 10 (Buster)"
-        label: "{{ foreman_repo_label_prefix | default('') }}azure-cli-debian10"
-        url: "{{ foreman_repo_baseurl_Hashicorp }}/repos/azure-cli/"
+        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-debian10"
+        url: "{{ foreman_repo_baseurl_hashicorp_apt }}/"
         <<: *foreman_products_defaults_debian
         organization: "{{ foreman_organization_hashicorp_debian10 }}"
         deb_releases: buster
@@ -119,8 +120,8 @@ foreman_products_hashicorp_debian11:
     organization: "{{ foreman_organization_hashicorp_debian11 }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - Amd64 - Debian 11 (Bullseye)"
-        label: "{{ foreman_repo_label_prefix | default('') }}azure-cli-debian11"
-        url: "{{ foreman_repo_baseurl_Hashicorp }}/repos/azure-cli/"
+        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-debian11"
+        url: "{{ foreman_repo_baseurl_hashicorp_apt }}/"
         <<: *foreman_products_defaults_debian
         organization: "{{ foreman_organization_hashicorp_debian11 }}"
         deb_releases: bullseye
@@ -131,8 +132,8 @@ foreman_products_hashicorp_debian12:
     organization: "{{ foreman_organization_hashicorp_debian12 }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - Amd64 - Debian 12 (Bookworm)"
-        label: "{{ foreman_repo_label_prefix | default('') }}azure-cli-debian12"
-        url: "{{ foreman_repo_baseurl_Hashicorp }}/repos/azure-cli/"
+        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-debian12"
+        url: "{{ foreman_repo_baseurl_hashicorp_apt }}/"
         <<: *foreman_products_defaults_debian
         organization: "{{ foreman_organization_hashicorp_debian12 }}"
         deb_releases: bookworm
@@ -156,8 +157,8 @@ foreman_products_hashicorp_ubuntu2004:
     organization: "{{ foreman_organization_hashicorp_ubuntu2004 }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - Amd64 - Ubuntu 20.04 (Focal Fossa)"
-        label: "{{ foreman_repo_label_prefix | default('') }}azure-cli-ubuntu2004"
-        url: "{{ foreman_repo_baseurl_Hashicorp }}/repos/azure-cli/"
+        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-ubuntu2004"
+        url: "{{ foreman_repo_baseurl_hashicorp_apt }}/"
         <<: *foreman_products_defaults_debian
         organization: "{{ foreman_organization_hashicorp_ubuntu2004 }}"
         deb_releases: focal
@@ -168,8 +169,8 @@ foreman_products_hashicorp_ubuntu2204:
     organization: "{{ foreman_organization_hashicorp_ubuntu2204 }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Hashicorp Stable - Amd64 - Ubuntu 22.04 (Jammy Jellyfish)"
-        label: "{{ foreman_repo_label_prefix | default('') }}azure-cli-ubuntu2204"
-        url: "{{ foreman_repo_baseurl_Hashicorp }}/repos/azure-cli/"
+        label: "{{ foreman_repo_label_prefix | default('') }}hashicorp-ubuntu2204"
+        url: "{{ foreman_repo_baseurl_hashicorp_apt }}/"
         <<: *foreman_products_defaults_debian
         organization: "{{ foreman_organization_hashicorp_ubuntu2204 }}"
         deb_releases: jammy

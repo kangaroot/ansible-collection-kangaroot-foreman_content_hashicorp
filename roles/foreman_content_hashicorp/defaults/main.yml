@@ -10,6 +10,9 @@
 
 foreman_repo_baseurl_hashicorp: https://rpm.releases.hashicorp.com
 
+foreman_repo_baseurl_hashicorp_rpm: https://rpm.releases.hashicorp.com
+foreman_repo_baseurl_hashicorp_deb: https://apt.releases.hashicorp.com
+
 
 #######################################
 ### ENABLE VARS
